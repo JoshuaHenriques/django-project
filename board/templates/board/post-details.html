@@ -1,39 +1,45 @@
+{% extends 'board/base/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'board/styles/base.css' %}" />
-    <link rel="stylesheet" href="{% static 'board/styles/post-details.css' %}" />
-	<title>{{ post.title }}</title>
-</head>
-<body>
-	<main>
-		<article>
-			<img src="" alt="">
-			<section id="details">
-				<h2>{{ post.title }}</h2>
-				<p>{{ post.content }}</p>
-				<p>{{ post.likes }}</p>
-				<ol>
-					{% for comment in post.comments %}
-      					<li>{{comment.comment}}</li>
-      				{% endfor %}
-				</ol>
-			</section>
-			<section id="comment">
-				<h2>Add Comment</h2>
-				<form action="">
-					<label for="alias">Alias:</label><br>
-					<input type="text" id="alias" name="alias" value="Anon"><br>
-					<label for="comment">Comment:</label><br>
-					<input type="text" id="comment" name="comment"><br><br>
-					<input type="submit" value="Submit">
-				  </form> 
-			</section>
-		</article>
-	</main>
-</body>
-</html>
+
+
+{% block title %}
+	{{ post.title }}
+{% endblock %}
+
+{% block site_css %}
+	<link rel="stylesheet" href="{% static 'board/styles/post-details.css' %}" />
+{% endblock %}
+
+{% block main_heading %}
+	Share your images and start a discussion!
+{% endblock %}
+
+{% block header_content %}
+	<p>Or continue a discussion on someones post.</p>
+{% endblock %}
+
+{% block main %}
+	<article>
+		<img src="" alt="">
+		<section id="details">
+			<h2>{{ post.title }}</h2>
+			<p>{{ post.content }}</p>
+			<p>{{ post.likes }}</p>
+			<ol>
+				{% for comment in post.comments %}
+					<li>{{comment.comment}}</li>
+				{% endfor %}
+			</ol>
+		</section>
+		<section id="comment">
+			<h2>Add Comment</h2>
+			<form action="">
+				<label for="alias">Alias:</label><br>
+				<input type="text" id="alias" name="alias" value="Anon"><br>
+				<label for="comment">Comment:</label><br>
+				<input type="text" id="comment" name="comment"><br><br>
+				<input type="submit" value="Submit">
+			</form> 
+		</section>
+	</article>
+{% endblock %}
