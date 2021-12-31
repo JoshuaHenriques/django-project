@@ -1,13 +1,58 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Image Board</title>
-</head>
-<body>
-	<h1>Image Board</h1>
-	<p>First Post</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Board</title>
+    <link rel="stylesheet" href="{% static 'board/styles/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'board/styles/all-posts.css' %}" />
+  </head>
+  <body>
+    <header id="main-header">
+      <nav><a href="/" id="main-logo">Board Posts</a></nav>
+      <h1>Share your images and start a discussion!</h1>
+      <p>Or continue a discussion on someones post.</p>
+    </header>
+    <main>
+      <section>
+        <h2>Posts</h2>
+        <ol>
+          {% for post in board_posts %}
+          <li class="post-item">
+            <article>
+				<div class="post-summary">
+					<div class="post-image">
+						<img src="" alt="">
+					</div>
+					<div class="post-details">
+						<h3>{{ post.title }}</h3>
+						<p>{{ post.content }}</p>
+						<p>Likes: {{ post.likes }}</p>
+					</div>
+				</div>
+				<div class="post-actions">
+					<a href="/post/{{ post.id }}" class="btn">View Post</a>
+				</div>
+			</article>
+          </li>
+          {% endfor %}
+        </ol>
+      </section>
+    </main>
+    {% comment %} <h1>Image Board</h1>
+    {% if show_board %} {% for post in board_posts %}
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.content }}</p>
+    <p>Likes: {{ post.likes }}</p>
+    <ul>
+      {% for comment in post.comments %}
+      <li>{{comment.comment}}</li>
+      {% endfor %}
+    </ul>
+    {% endfor %} {% else %}
+    <h4>No Board Posts Found!</h4>
+    {% endif %} {% endcomment %}
+  </body>
 </html>
