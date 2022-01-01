@@ -5,10 +5,8 @@ from django.template.defaultfilters import slugify
 
 # Create your views here.
 
-
 def index(request):
     posts = Post.objects.all().order_by('-created_at')
-    show_add_post = False
     if request.method == 'GET':
         post_form = PostForm()
     else:
@@ -17,6 +15,7 @@ def index(request):
             post = post_form.save(commit=False)
             post.slug = slugify(post.title)
             post.save()
+            redirect('/')
         
         
     return render(request, 'board/index.html', {
@@ -39,7 +38,6 @@ def post_details(request, post_slug):
                 comment = comment_form.save(commit=False)
                 comment.post = selected_post
                 comment.save()
-                # redirect to a success page?
         
         return render(request, 'board/post-details.html', {
 			'post_found': True,
