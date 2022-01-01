@@ -27,15 +27,14 @@
 			<h2>{{ post.title }}</h2>
 			<p>{{ post.created_at }}</p>
 			<p>{{ post.content }}</p>
-			{% comment %} <p>Likes: {{ post.likes }}</p> {% endcomment %}
 			<ol>
 				{% for comment in comments %}
 					<li>{{comment.comment}}</li>
 				{% endfor %}
 			</ol> 
 		</section>
-		<section  id="comment">
-			<h2>Add Comment</h2>
+		<button onClick="toggle('comment')">Add Comment</button>
+		<section id="comment" style="display: none;">
 			<form action="{% url 'post-detail' post.slug %}" method="POST">
 				{% csrf_token %}
 				<ul>
