@@ -1,21 +1,12 @@
 {% extends 'board/base/base.html' %}
 {% load static %}
 
-
 {% block title %}
 	{{ post.title }}
 {% endblock %}
 
 {% block site_css %}
-	<link rel="stylesheet" href="{% static 'board/styles/post-details.css' %}" />
-{% endblock %}
-
-{% block main_heading %}
-	Share your images and start a discussion!
-{% endblock %}
-
-{% block header_content %}
-	<p>Or continue a discussion on someones post.</p>
+	{% comment %} <link rel="stylesheet" href="{% static 'board/styles/post-details.css' %}" /> {% endcomment %}
 {% endblock %}
 
 {% block main %}
@@ -38,7 +29,7 @@
 			<form action="{% url 'post-detail' post.slug %}" method="POST">
 				{% csrf_token %}
 				<ul>
-					{{ form.as_ul }}
+					{{ form.as_p }}
 				</ul>
 				<div>
 					<button>Submit</button>

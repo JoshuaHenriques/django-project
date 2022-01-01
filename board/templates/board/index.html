@@ -6,21 +6,13 @@
 {% endblock %}
 
 {% block site_css %}
-	<link rel="stylesheet" href="{% static 'board/styles/all-posts.css' %}" />
-{% endblock %}
-
-{% block main_heading %}
-	Share your images and start a discussion!
-{% endblock %}
-
-{% block header_content %}
-	<p>Or continue a discussion on someones post.</p>
+	{% comment %} <link rel="stylesheet" href="{% static 'board/styles/all-posts.css' %}" /> {% endcomment %}
 {% endblock %}
 
 {% block main %}
-	<section>
+	<div>
 		<button type="button" class="btn btn-primary" onClick="toggle('post')">Add Post</button>
-		<section id="post" style="display: none;">
+		<div style="display: none;">
 			<form action="{% url 'all-posts' %}" method="POST" enctype="multipart/form-data">
 				{% csrf_token %}
 				<ul>
@@ -30,12 +22,12 @@
 					<button>Submit</button>
 				</div>
 			<form>
-		</section>
+			</div>
 		<ol>
 		{% for post in board_posts %}
 			{% include 'board/includes/post-item.html' with title=post.title image=post.photo.url content=post.content add_like=post.add_like likes=post.likes slug=post.slug %}
 		{% endfor %}
 		</ol>
-	</section>
+	</div>
 {% endblock %}
 
