@@ -33,7 +33,7 @@
 				{% endfor %}
 			</ol> 
 		</section>
-		<button onClick="toggle('comment')">Add Comment</button>
+		<button type="button" class="btn btn-primary" onClick="toggle('comment')">Add Comment</button>
 		<section id="comment" style="display: none;">
 			<form action="{% url 'post-detail' post.slug %}" method="POST">
 				{% csrf_token %}
