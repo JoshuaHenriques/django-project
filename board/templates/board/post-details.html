@@ -22,26 +22,29 @@
 
 {% if post_found %}
 	<article>
-		<img src="{{ post.photo.url }}" alt="">
+		<img id="main-image" src="{{ post.photo.url }}" alt="">
 		<section id="details">
 			<h2>{{ post.title }}</h2>
+			<p>{{ post.created_at }}</p>
 			<p>{{ post.content }}</p>
-			<p>{{ post.likes }}</p>
+			{% comment %} <p>Likes: {{ post.likes }}</p> {% endcomment %}
 			<ol>
 				{% for comment in comments %}
 					<li>{{comment.comment}}</li>
 				{% endfor %}
 			</ol> 
 		</section>
-		<section id="comment">
+		<section  id="comment">
 			<h2>Add Comment</h2>
-			<form action="">
-				<label for="alias">Alias:</label><br>
-				<input type="text" id="alias" name="alias" value="Anonymous"><br>
-				<label for="comment">Comment:</label><br>
-				<input type="text" id="comment" name="comment"><br><br>
-				<input type="submit" value="Submit">
-			</form> 
+			<form action="{% url 'post-detail' post.slug %}" method="POST">
+				{% csrf_token %}
+				<ul>
+					{{ form.as_ul }}
+				</ul>
+				<div>
+					<button>Submit</button>
+				</div>
+			<form>
 		</section>
 	</article>
 {% else %}

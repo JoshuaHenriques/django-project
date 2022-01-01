@@ -20,10 +20,23 @@
 {% block main %}
 	<section>
 		<h2>Posts</h2>
+		<button onClick="toggle('post')">Add Post</button>
+		<section id="post" style="display: none;">
+			<form action="{% url 'all-posts' %}" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<ul>
+					{{ form.as_p }}
+				</ul>
+				<div>
+					<button>Submit</button>
+				</div>
+			<form>
+		</section>
 		<ol>
 		{% for post in board_posts %}
-			{% include 'board/includes/post-item.html' with title=post.title image=post.photo.url content=post.content likes=post.likes slug=post.slug %}
+			{% include 'board/includes/post-item.html' with title=post.title image=post.photo.url content=post.content add_like=post.add_like likes=post.likes slug=post.slug %}
 		{% endfor %}
 		</ol>
 	</section>
 {% endblock %}
+
