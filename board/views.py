@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Post
+from .models import Post, Comment
 
 # Create your views here.
 
@@ -15,7 +15,7 @@ def index(request):
 def post_details(request, post_slug):
     try:
         selected_post = Post.objects.get(slug=post_slug)
-        comments = selected_post.comments.all()
+        comments = Comment.objects.filter(post=selected_post)
         return render(request, 'board/post-details.html', {
             'post_found': True,
             'post': selected_post,
@@ -25,6 +25,7 @@ def post_details(request, post_slug):
         '''
 			Create a 404 page
         '''
+        print(exc)
         return render(request, 'board/post-details.html', {
 			'post_found': False
 		})
