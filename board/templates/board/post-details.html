@@ -19,14 +19,16 @@
 {% endblock %}
 
 {% block main %}
+
+{% if post_found %}
 	<article>
-		<img src="" alt="">
+		<img src="{{ post.photo.url }}" alt="">
 		<section id="details">
 			<h2>{{ post.title }}</h2>
 			<p>{{ post.content }}</p>
 			<p>{{ post.likes }}</p>
 			<ol>
-				{% for comment in post.comments %}
+				{% for comment in comments %}
 					<li>{{comment.comment}}</li>
 				{% endfor %}
 			</ol>
@@ -35,11 +37,15 @@
 			<h2>Add Comment</h2>
 			<form action="">
 				<label for="alias">Alias:</label><br>
-				<input type="text" id="alias" name="alias" value="Anon"><br>
+				<input type="text" id="alias" name="alias" value="Anonymous"><br>
 				<label for="comment">Comment:</label><br>
 				<input type="text" id="comment" name="comment"><br><br>
 				<input type="submit" value="Submit">
 			</form> 
 		</section>
 	</article>
+{% else %}
+	<h3>No Post Found!</h3>
+{% endif %}
+	
 {% endblock %}

@@ -22,23 +22,7 @@
 		<h2>Posts</h2>
 		<ol>
 		{% for post in board_posts %}
-		<li class="post-item">
-			<article>
-				<div class="post-summary">
-					<div class="post-image">
-						<img src="" alt="">
-					</div>
-					<div class="post-details">
-						<h3>{{ post.title }}</h3>
-						<p>{{ post.content }}</p>
-						<p>Likes: {{ post.likes }}</p>
-					</div>
-				</div>
-				<div class="post-actions">
-					<a href="{% url 'post-detail' post.id %}" class="btn">View Post</a>
-				</div>
-			</article>
-		</li>
+			{% include 'board/includes/post-item.html' with title=post.title image=post.photo.url content=post.content likes=post.likes slug=post.slug %}
 		{% endfor %}
 		</ol>
 	</section>

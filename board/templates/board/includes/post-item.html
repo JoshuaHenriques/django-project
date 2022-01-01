@@ -1,0 +1,17 @@
+<li class="post-item">
+	<article>
+		<div class="post-summary">
+			<div class="post-image">
+				<img src="{{ image }}" alt="{{ title }}">
+			</div>
+			<div class="post-details">
+				<h3>{{ title }}</h3>
+				<p>{{ content }}</p>
+				<p>Likes: {{ likes }}</p>
+			</div>
+		</div>
+		<div class="post-actions">
+			<a href="{% url 'post-detail' slug %}" class="btn">View Post</a>
+		</div>
+	</article>
+</li>
