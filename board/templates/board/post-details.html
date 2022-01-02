@@ -21,7 +21,7 @@
 {% block main %}
 
 {% if post_found %}
-	<div class="container">
+	<div class="container-sm">
 	<div class="article">
 		<a href="{{ post.photo.url }}"><img id="main-image" src="{{ post.photo.url }}" alt=""></a>
 		<div id="details">
@@ -50,14 +50,18 @@
 			</div>
 		<form>
 		</div>
-	<h3 class="text_comments">Comments:</h3>
-	<div class="comments">
-		{% for comment in comments %}
-			<div class="comment">	
-				<h5>{{ comment.alias }} </h5>
-				<p> {{comment.comment}} </p>
+		<div class="center">
+			<h3 class="text-comments">Comments:</h3>
+		<div class="comment-section">
+			<div class="comments">
+				{% for comment in comments %}
+					<div class="comment">	
+						<h5>{{ comment.alias }} </h5>
+						<p> {{comment.comment}} </p>
+					</div>
+				{% endfor %}
 			</div>
-		{% endfor %}
+		</div>
 	</div>
 </div>
 {% else %}
