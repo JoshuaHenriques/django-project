@@ -17,7 +17,7 @@ def index(request):
             post.slug = slugify(post.title)
             post.save()
             post_form = PostForm()
-            return redirect('post-detail', post.slug)
+            return redirect('post-details', post.slug)
         
     return render(request, 'board/index.html', {
         'show_board': True,

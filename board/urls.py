@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
 	path('', views.index, name='all-posts'), # our-domain.com/
-	path('post/<slug:post_slug>', views.post_details, name='post-detail') # our-domain.com/<dynamic>
+	path('post/<slug:post_slug>', views.post_details, name='post-details') # our-domain.com/<dynamic>
 ]
