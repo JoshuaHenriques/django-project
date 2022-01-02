@@ -14,7 +14,7 @@ Imagine board to share images alongside text and disccusion.
 ![Alt text](./board/static/board/images/frontpage.png?raw=true "Screenshot")
 
 ### Post-Details Page
-![Alt text](./board/static/board/images/post-details.png?raw=true "Screenshot")
+![Alt text](./board/static/board/images/detailspage.png?raw=true "Screenshot")
 
 ## Contact
 
