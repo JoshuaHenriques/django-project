@@ -34,7 +34,9 @@ def post_details(request, post_slug):
     try:
         selected_post = Post.objects.get(slug=post_slug)
         comments = Comment.objects.filter(post=selected_post).order_by('-created_at')
-        
+        page = request.GET.get('page', 1)
+        paginator = Paginator(comments, 5)
+        page_comments = paginator.page(page)
         if request.method == 'GET':            
             comment_form = CommentForm()
         else:
@@ -49,7 +51,7 @@ def post_details(request, post_slug):
         return render(request, 'board/post-details.html', {
 			'post_found': True,
 			'post': selected_post,
-			'comments': comments,
+			'comments': page_comments,
 			'form': comment_form
 		})
     except Exception as exc:

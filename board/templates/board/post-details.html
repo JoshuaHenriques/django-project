@@ -63,6 +63,7 @@
 			</div>
 		</div>
 	</div>
+	{% include 'board/includes/pagination.html' with list=comments %}
 </div>
 {% else %}
 	<h3>No Post Found!</h3>
