@@ -1,13 +1,17 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
 from .models import Post, Comment
 from .forms import CommentForm, PostForm
 from django.template.defaultfilters import slugify
+from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 
 # Create your views here.
 
 def index(request):
     posts = Post.objects.all().order_by('-created_at')
+    page = request.GET.get('page', 1)
+    paginator = Paginator(posts, 3)
+    page_posts = paginator.page(page)
     if request.method == 'GET':
         post_form = PostForm()
     else:
@@ -21,7 +25,7 @@ def index(request):
         
     return render(request, 'board/index.html', {
         'show_board': True,
-        'board_posts': posts,
+        'board_posts': page_posts,
         'form': post_form
     })
 

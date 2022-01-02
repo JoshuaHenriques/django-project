@@ -20,6 +20,11 @@ ol {
   padding: 0;
 }
 
+.page {
+  display: flex;
+  justify-content: center;
+}
+
 .form label {
   font-weight: bold;
   color: #46424d;

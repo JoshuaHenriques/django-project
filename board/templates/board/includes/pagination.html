@@ -1,0 +1,25 @@
+{% load static %}
+
+{% block site_css %}
+	<link rel="stylesheet" href="{% static 'board/styles/all-posts.css' %}" />
+{% endblock %}
+
+<ul class="page pagination">
+	{% if board_posts.has_previous %}
+		<li class="page-item"><a class="page-link" href="?page={{ board_posts.previous_page_number }}">Previous</a></li>
+	{% else %}
+		<li class="page-item"><span class="page-link">Previous</span></li>
+	{% endif %}
+	{% for i in board_posts.paginator.page_range %}
+		{% if board_posts.number == i %}
+			<li class="page-item"><span class="page-link">{{ i }} <span class="sr-only"></span></span></li>
+		{% else %}
+			<li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+		{% endif %}
+	{% endfor %}
+	{% if board_posts.has_next %}
+	<li class="page-item"><a class="page-link" href="?page={{ board_posts.next_page_number }}">Next</a></li>
+	{% else %}
+		<li class="page-item"><span class="page-link">Next</span></li>
+	{% endif %}
+</ul>

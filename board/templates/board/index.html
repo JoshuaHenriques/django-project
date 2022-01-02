@@ -39,6 +39,9 @@
 				{% include 'board/includes/post-item.html' with title=post.title image=post.photo.url content=post.content add_like=post.add_like likes=post.likes slug=post.slug %}
 			{% endfor %}
 			</ol>
+			{% if board_posts.has_other_pages %}
+				{% include 'board/includes/pagination.html' with board_posts=board_posts %}
+			{% endif %}
 		</section>
 	</div>
 {% endblock %}
