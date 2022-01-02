@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from .models import Post, Comment
 from .forms import CommentForm, PostForm
 from django.template.defaultfilters import slugify
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -15,8 +16,8 @@ def index(request):
             post = post_form.save(commit=False)
             post.slug = slugify(post.title)
             post.save()
-            redirect('/')
-        
+            post_form = PostForm()
+            return redirect('post-detail', post.slug)
         
     return render(request, 'board/index.html', {
         'show_board': True,
@@ -38,6 +39,8 @@ def post_details(request, post_slug):
                 comment = comment_form.save(commit=False)
                 comment.post = selected_post
                 comment.save()
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+                
         
         return render(request, 'board/post-details.html', {
 			'post_found': True,
