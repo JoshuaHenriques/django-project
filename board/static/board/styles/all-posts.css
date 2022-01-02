@@ -1,62 +1,89 @@
 section {
-	max-width: 40rem;
-	margin: 3rem auto;
-  }
-  
-  ol {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-  }
-  
-  .post-item {
-	margin: 1rem 0;
-	background-color: #350490;
-	padding: 2rem;
-	color: white;
-	border-radius: 4px;
-  }
-  
-  .post-summary {
-	display: flex;
-	align-items: flex-start;
-  }
-  
-  .post-image {
-	margin-right: 2rem;
-  }
-  
-  .post-image img {
-	width: 8rem;
-	height: 8rem;
-	object-fit: cover;
-	border-radius: 50%;
-  }
-  
-  .post-details h3 {
-	color: inherit;
-	margin-top: 0;
-	margin-bottom: 0.5rem;
-	font-size: 2rem;
-  }
-  
-  .post-details address {
-	font-style: italic;
-  }
-  
-  .post-actions {
-	margin-top: 1.5rem;
-	text-align: right;
-  }
-  
-  .post-actions .btn {
-	background-color: #cb82fb;
-	border-color: #cb82fb;
-	color: #350490;
-	padding: 0.75rem 2rem;
-  }
-  
-  .post-actions .btn:hover {
-	background-color: #ba82fb;
-	border-color: #ba82fb;
-  }
+  max-width: 40rem;
+  margin: 3rem auto;
+}
+
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.form {
+  margin: 10px;
+  text-align: center;
+}
+
+.form ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.form label {
+  font-weight: bold;
+  color: #46424d;
+  margin-right: 1rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form input {
+  font: inherit;
+  width: 40%;
+  background-color: #ebeaee;
+  border: 1px solid #4b4753;
+  border-radius: 4px;
+  padding: 0.25rem;
+}
+
+.post-item {
+  margin: 1rem 0;
+  background-color: #ede6f8;
+  padding: 2rem;
+  color: black;
+  border-radius: 4px;
+}
+
+.add {
+	text-align: center;
+}
+
+.post-summary {
+  display: flex;
+  align-items: flex-start;
+}
+
+.post-image {
+  margin-right: 2rem;
+}
+
+.post-image img {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.post-details h3 {
+  color: inherit;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+.post-details address {
+  font-style: italic;
+}
+
+.post-actions {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+
+
+
+.post-actions .btn:hover {
+  background-color: #ba82fb;
+  border-color: #ba82fb;
+}

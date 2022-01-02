@@ -28,7 +28,7 @@ def index(request):
 def post_details(request, post_slug):
     try:
         selected_post = Post.objects.get(slug=post_slug)
-        comments = Comment.objects.filter(post=selected_post)
+        comments = Comment.objects.filter(post=selected_post).order_by('-created_at')
         
         if request.method == 'GET':            
             comment_form = CommentForm()

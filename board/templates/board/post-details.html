@@ -15,22 +15,31 @@
 {% endblock %}
 
 {% block header_content %}
-	<p>Or continue a discussion on someones post.</p>
+	<p>Or continue a discussion on someone's post.</p>
 {% endblock %}
 
 {% block main %}
 
 {% if post_found %}
-	<article>
-		<img id="main-image" src="{{ post.photo.url }}" alt="">
-		<section id="details">
-			<h2>{{ post.title }}</h2>
-			<p>{{ post.created_at }}</p>
-			<p>{{ post.content }}</p> 
-		</section>
-	</article>
-	<button type="button" class="btn btn-primary" onClick="toggle('comment')">Add Comment</button>
-	<section id="comment" style="display: none;">
+	<div class="container">
+	<div class="article">
+		<a href="{{ post.photo.url }}"><img id="main-image" src="{{ post.photo.url }}" alt=""></a>
+		<div id="details">
+			<div class="row">
+				<div class="col">
+					<h2>{{ post.title }}</h2>
+				</div>
+				<div class="col-3 timestamp">
+					<p>{{ post.created_at }}</p>
+				</div>
+			</div>
+			<p class="content">{{ post.content }}</p> 
+		</div>
+	</div>
+	<div class="add">
+		<button type="button" class="btn btn-primary" onClick="toggle('comment')">Add Comment</button>
+	</div>
+	<div id="comment" class="form" style="display: none;">
 		<form action="{% url 'post-detail' post.slug %}" method="POST">
 			{% csrf_token %}
 			<ul>
@@ -40,12 +49,17 @@
 				<button>Submit</button>
 			</div>
 		<form>
-	</section>
-	<ol>
+		</div>
+	<h3 class="text_comments">Comments:</h3>
+	<div class="comments">
 		{% for comment in comments %}
-			<li>{{comment.comment}}</li>
+			<div class="comment">	
+				<h5>{{ comment.alias }} </h5>
+				<p> {{comment.comment}} </p>
+			</div>
 		{% endfor %}
-	</ol>
+	</div>
+</div>
 {% else %}
 	<h3>No Post Found!</h3>
 {% endif %}

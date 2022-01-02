@@ -14,28 +14,32 @@
 {% endblock %}
 
 {% block header_content %}
-	<p>Or continue a discussion on someones post.</p>
+	<p>Or continue a discussion on someone's post.</p>
 {% endblock %}
 
 {% block main %}
-	<section>
-		<button type="button" class="btn btn-primary" onClick="toggle('post')">Add Post</button>
-		<section id="post" style="display: none;">
-			<form action="{% url 'all-posts' %}" method="POST" enctype="multipart/form-data">
-				{% csrf_token %}
-				<ul>
-					{{ form.as_p }}
-				</ul>
-				<div>
-					<button>Submit</button>
-				</div>
-			<form>
+	<div class="container">
+		<section>
+			<div class="add">
+				<button type="button" class="btn btn-primary" onClick="toggle('post')">Add Post</button>
+			</div>
+			<div id="post" class="form" style="display: none;">
+				<form action="{% url 'all-posts' %}" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					<ul>
+						{{ form.as_p }}
+					</ul>
+					<div>
+						<button>Submit</button>
+					</div>
+				<form>
+			</div>
+			<ol>
+			{% for post in board_posts %}
+				{% include 'board/includes/post-item.html' with title=post.title image=post.photo.url content=post.content add_like=post.add_like likes=post.likes slug=post.slug %}
+			{% endfor %}
+			</ol>
 		</section>
-		<ol>
-		{% for post in board_posts %}
-			{% include 'board/includes/post-item.html' with title=post.title image=post.photo.url content=post.content add_like=post.add_like likes=post.likes slug=post.slug %}
-		{% endfor %}
-		</ol>
-	</section>
+	</div>
 {% endblock %}
 
