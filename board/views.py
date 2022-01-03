@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 
 def index(request):
-    posts = Post.objects.all().order_by('-created_at')
+    posts = Post.objects.all().order_by('-updated_at')
     page = request.GET.get('page', 1)
     paginator = Paginator(posts, 3)
     page_posts = paginator.page(page)
@@ -44,6 +44,7 @@ def post_details(request, post_slug):
             if comment_form.is_valid():
                 comment = comment_form.save(commit=False)
                 comment.post = selected_post
+                selected_post.save()
                 comment.save()
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
                 
