@@ -8,6 +8,8 @@
 ## About The Project
 Imagine board to share images alongside text and disccusion.
 
+Try at http://djangodemo.ddns.net:8000
+
 ## Screenshots
 
 ### Frontpage
