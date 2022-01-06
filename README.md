@@ -22,4 +22,4 @@ Try at http://djangodemo.ddns.net:8000
 
 [https://joshuahenriques.com](https://joshuahenriques.com)
 
-[https://github.com/joshuahenriques/image-board](https://github.com/joshuahenriques/database-generator)
+[https://github.com/joshuahenriques/image-board](https://github.com/joshuahenriques/image-board)
