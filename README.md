@@ -17,9 +17,3 @@ Try at (old) http://djangodemo.ddns.net:8000
 
 ### Post-Details Page
 ![Alt text](./board/static/board/images/detailspage.png?raw=true "Screenshot")
-
-## Contact
-
-[https://joshuahenriques.com](https://joshuahenriques.com)
-
-[https://github.com/joshuahenriques/image-board](https://github.com/joshuahenriques/image-board)
